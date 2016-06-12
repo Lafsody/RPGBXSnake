@@ -3,16 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Snake {
+    public enum DIRECTION
+    {
+        UP = 0,
+        RIGHT = 1,
+        DOWN = 2,
+        LEFT = 3
+    }
+
     private List<Hero> heroes;
+    private DIRECTION direction;
 
     public Snake()
     {
         heroes = new List<Hero>();
+        direction = DIRECTION.RIGHT;
     }
 
     public void AddHero(Hero hero)
     {
         heroes.Add(hero);
+    }
+
+    public void PopFront()
+    {
+        Hero hero = heroes[0];
+        FrontRotateHero();
+        heroes.Remove(hero);
+        // TODO hero.clearStatus or remove or whathever
     }
 
     public Hero GetFirst()

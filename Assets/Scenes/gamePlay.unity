@@ -85,6 +85,110 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1353525238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1353525239}
+  m_Layer: 0
+  m_Name: Character
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353525239
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1353525238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &1748118039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1748118041}
+  - 114: {fileID: 1748118040}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1748118040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748118039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41d7a7398783b214787989d2678982d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroes:
+  - {fileID: 21300000, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300002, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300004, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300006, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300012, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300014, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300016, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300018, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300020, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300022, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300024, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300026, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300028, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300030, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300032, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300034, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300036, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300038, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300040, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300042, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  enemies:
+  - {fileID: 21300044, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300046, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300048, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300050, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300052, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300054, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300056, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300058, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300060, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300062, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300064, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300072, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300074, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300076, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300078, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+  - {fileID: 21300080, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
+--- !u!4 &1748118041
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748118039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &1935757350
 GameObject:
   m_ObjectHideFlags: 0
