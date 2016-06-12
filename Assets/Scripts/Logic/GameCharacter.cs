@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameCharacter {
+public class GameCharacter : GridObject{
 
     public enum CHARACTER_TYPE
     {
@@ -10,24 +10,11 @@ public class GameCharacter {
         BLUE = 2
     }
 
-    protected int x;
-    protected int y;
-
     protected int maxHeart;
     protected int heart;
     protected int sword;
     protected int shield;
     protected CHARACTER_TYPE characterType;
-
-    public int GetX()
-    {
-        return x;
-    }
-
-    public int GetY()
-    {
-        return y;
-    }
 
     public int GetHeart()
     {
