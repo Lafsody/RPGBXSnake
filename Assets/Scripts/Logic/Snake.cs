@@ -43,6 +43,11 @@ public class Snake {
         return heroes[0];
     }
 
+    public List<Hero> GetHeroes()
+    {
+        return heroes;
+    }
+
     public void MoveTo(Vector3 nextPosition)
     {
         Hero firstHero = heroes[0];

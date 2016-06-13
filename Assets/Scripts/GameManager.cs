@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour {
 
         Hero hero = CreateHero(x, y);
         snake.AddHero(hero);
+        gridSystem.AddObject(x, y, hero);
     }
 
     private Hero CreateHero(int x, int y)
@@ -178,7 +180,6 @@ public class GameManager : MonoBehaviour {
             if(gridObject is Hero)
             {
                 snake.AddHero(gridObject as Hero);
-                gridSystem.RemoveObject(nextX, nextY);
             }
             else if(gridObject is Enemy)
             {
@@ -188,7 +189,10 @@ public class GameManager : MonoBehaviour {
         }
         nextX = snake.GetNextX();
         nextY = snake.GetNextY();
+
+        ClearSnakeGrid();
         snake.MoveTo(GetRealPositionFromGridId(nextX, nextY));
+        AddSnakeGrid();
     }
 
     private void ForceChangeSnakeDirection()
@@ -221,6 +225,28 @@ public class GameManager : MonoBehaviour {
     private void Combat()
     {
 
+    }
+
+    private void ClearSnakeGrid()
+    {
+        List<Hero> heroes = snake.GetHeroes();
+        foreach(Hero hero in heroes)
+        {
+            int x = hero.GetX();
+            int y = hero.GetY();
+            gridSystem.RemoveObject(x, y);
+        }
+    }
+
+    private void AddSnakeGrid()
+    {
+        List<Hero> heroes = snake.GetHeroes();
+        foreach(Hero hero in  heroes)
+        {
+            int x = hero.GetX();
+            int y = hero.GetY();
+            gridSystem.AddObject(x, y, hero);
+        } 
     }
 
     private void Spawn()

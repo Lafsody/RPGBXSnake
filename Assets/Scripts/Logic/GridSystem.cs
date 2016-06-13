@@ -75,7 +75,7 @@ public class GridSystem {
             return;
         }
         grids[x, y] = gridObject;
-        for(int i = 0; i < freeSpaces.Count; i++)
+        for(int i = freeSpaces.Count - 1; i >= 0; i--)
         {
             if(x == freeSpaces[i].x && y == freeSpaces[i].y)
             {
