@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour {
 
     private float elapsedTime;
     private float translateTime;
+    private float combatTime;
+
+    private float spawnElapseTime;
+    private float spawnTime;
 
     void Awake()
     {
@@ -38,6 +42,10 @@ public class GameManager : MonoBehaviour {
 
         elapsedTime = 0;
         translateTime = 0.5f;
+        combatTime = 0.5f;
+
+        spawnElapseTime = 0;
+        spawnTime = 3;
     }
 
     void Start()
@@ -51,15 +59,36 @@ public class GameManager : MonoBehaviour {
 
         int x = width / 2;
         int y = height / 2;
-        HeroController controller = CreateController<HeroController>(x, y);
 
-        Hero hero = new Hero(x, y, controller);
+        Hero hero = CreateHero(x, y);
         snake.AddHero(hero);
+    }
+
+    private Hero CreateHero(int x, int y)
+    {
+        HeroController controller = CreateController<HeroController>(x, y);
+        return new Hero(x, y, controller);
+    }
+
+    private Enemy CreateEnemy(int x, int y)
+    {
+        EnemyController controller = CreateController<EnemyController>(x, y);
+        return new Enemy(x, y, controller);
     }
 
     public T CreateController<T>(int x, int y) where T : GridObjectController
     {
-        GameObject gameObject = Instantiate(SpriteHolder.Instance.heroPrefabs, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
+        GameObject prefab = null;
+        if(typeof(T) == typeof(HeroController))
+        {
+            prefab = SpriteHolder.Instance.heroPrefab;
+        }
+        else if(typeof(T) == typeof(EnemyController))
+        {
+            prefab = SpriteHolder.Instance.enemyPrefab;
+        }
+
+        GameObject gameObject = Instantiate(prefab, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
         SpriteRenderer sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
         sprite.sprite = SpriteHolder.Instance.GetRandomHeroSprite();
 
@@ -75,7 +104,14 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
-        elapsedTime += Time.deltaTime;
+        float deltatime = Time.deltaTime;
+        UpdateGameTime(deltatime);
+        UpdateSpawnTime(deltatime);
+    }
+
+    private void UpdateGameTime(float deltaTime)
+    {
+        elapsedTime += deltaTime;
         if (gameState == GAMESTATE.MOVE)
         {
             if (elapsedTime >= translateTime)
@@ -83,7 +119,7 @@ public class GameManager : MonoBehaviour {
                 elapsedTime = 0;
                 CheckMove();
 
-                if(snake.IsEmpty())
+                if (snake.IsEmpty())
                 {
                     gameState = GAMESTATE.GAMEEND;
                 }
@@ -104,6 +140,16 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private void UpdateSpawnTime(float deltaTime)
+    {
+        spawnElapseTime += deltaTime;
+        if(spawnElapseTime >= spawnTime)
+        {
+            spawnElapseTime = 0;
+            Spawn();
+        }
+    }
+
     private void CheckMove()
     {
         int nextX = snake.GetNextX();
@@ -113,7 +159,7 @@ public class GameManager : MonoBehaviour {
 
         if(gridSystem.IsBorder(nextX, nextY))
         {
-            snake.PopFront();
+            //snake.PopFront();
             if (snake.IsEmpty())
                 return;
             ForceChangeSnakeDirection();
@@ -166,5 +212,30 @@ public class GameManager : MonoBehaviour {
     private void Combat()
     {
 
+    }
+
+    private void Spawn()
+    {
+        // Spawn Hero
+        GridSystem.Point point = gridSystem.GetFreeSpace();
+        if(point == null)
+        {
+            gameState = GAMESTATE.GAMEEND;
+            return;
+        }
+
+        Hero newHero = CreateHero(point.x, point.y);
+        gridSystem.AddObject(point.x, point.y, newHero);
+
+        // Spawn Enemy
+        GridSystem.Point point1 = gridSystem.GetFreeSpace();
+        if (point1 == null)
+        {
+            gameState = GAMESTATE.GAMEEND;
+            return;
+        }
+
+        Enemy newEnemy = CreateEnemy(point1.x, point1.y);
+        gridSystem.AddObject(point1.x, point1.y, newEnemy);
     }
 }

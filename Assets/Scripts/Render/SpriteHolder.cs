@@ -7,7 +7,8 @@ public class SpriteHolder : MonoBehaviour {
     private static SpriteHolder _instance;
     public static SpriteHolder Instance { get { return _instance; } }
 
-    public GameObject heroPrefabs;
+    public GameObject heroPrefab;
+    public GameObject enemyPrefab;
 
     public Sprite[] heroes;
     public Sprite[] enemies;
@@ -22,7 +23,7 @@ public class SpriteHolder : MonoBehaviour {
 
     public GameObject GetHeroPrefab()
     {
-        return heroPrefabs;
+        return heroPrefab;
     }
 
     public Sprite GetRandomHeroSprite()

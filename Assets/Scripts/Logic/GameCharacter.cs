@@ -16,7 +16,7 @@ public abstract class GameCharacter : GridObject{
     protected int shield;
     protected CHARACTER_TYPE characterType;
 
-    public GameCharacter(int _x, int _y) : base (_x, _y)
+    public GameCharacter(int _x, int _y, GridObjectController _controller) : base (_x, _y, _controller)
     {
         InitialStatus();
     }

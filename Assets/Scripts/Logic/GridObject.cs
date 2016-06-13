@@ -7,10 +7,11 @@ public abstract class GridObject {
     protected int y;
     protected GridObjectController controller;
 
-    public GridObject(int _x, int _y)
+    public GridObject(int _x, int _y, GridObjectController _controller)
     {
         x = _x;
         y = _y;
+        controller = _controller;
     }
 
     public int GetX()

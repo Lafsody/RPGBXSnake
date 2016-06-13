@@ -9,6 +9,7 @@ public class GridObjectController : MonoBehaviour {
     void Awake()
     {
         elapsedTime = 0;
+        targetPosition = transform.position;
     }
 
     public Vector3 GetPosition()
@@ -33,7 +34,7 @@ public class GridObjectController : MonoBehaviour {
 
     public void MoveTo(float x, float y)
     {
-        SetTargetPosition(new Vector3(x, 0, y));
+        SetTargetPosition(new Vector3(x, y, 0));
     }
 
     void Update()
