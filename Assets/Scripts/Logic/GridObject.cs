@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GridObject {
+public abstract class GridObject {
 
     protected int x;
     protected int y;
     protected GridObjectController controller;
+
+    public GridObject(int _x, int _y)
+    {
+        x = _x;
+        y = _y;
+    }
 
     public int GetX()
     {
@@ -27,14 +33,20 @@ public class GridObject {
 
         return (T)controller;
     }
-
-    public void SetAllPosition(int _x, int _y, Vector3 _position, Vector3 _targetPosition)
+    
+    public void SetAllPosition(int _x, int _y, Vector3 _position, Vector3 _targetPosition, int setId)
     {
-        SetX(_x);
-        SetY(_y);
+        if ((setId & 1) != 0)
+        {
+            SetX(_x);
+            SetY(_y);
+        }
 
-        controller.SetPosition(_position);
-        controller.SetTargetPosition(_targetPosition);
+        if ((setId & 2) != 0)
+            controller.SetPosition(_position);
+
+        if( (setId & 4) != 0)
+            controller.SetTargetPosition(_targetPosition);
     }
 
     public void SetX(int _x)

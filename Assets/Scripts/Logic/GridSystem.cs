@@ -7,6 +7,13 @@ public class GridSystem {
     private int width;
     private int height;
 
+    public GridSystem(int _width, int _height)
+    {
+        width = _width;
+        height = _height;
+        grids = new GridObject[width, height];
+    }
+
     public void ClearGrids()
     {
         for (int i = 0; i < width; i++)
@@ -18,9 +25,14 @@ public class GridSystem {
         }
     }
 
+    public bool IsBorder(int x, int y)
+    {
+        return x < 0 || x >= width || y < 0 || y >= height;
+    }
+
     public bool HasObjectOnGrid(int x, int y)
     {
-        if (x < 0 || x >= width || y < 0 || y >= height)
+        if (IsBorder(x, y))
         {
             Debug.Log("Out of bound: grids position at " + x + ", " + y);
             return false;

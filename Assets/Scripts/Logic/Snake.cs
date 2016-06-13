@@ -13,7 +13,7 @@ public class Snake {
 
     private List<Hero> heroes;
     private DIRECTION direction;
-
+    
     public Snake()
     {
         heroes = new List<Hero>();
@@ -41,6 +41,47 @@ public class Snake {
             return null;
         }
         return heroes[0];
+    }
+
+    public void MoveTo(Vector3 nextPosition)
+    {
+        Hero firstHero = heroes[0];
+
+        ShiftPosition(5);
+
+        firstHero.SetAllPosition(GetNextX(), GetNextY(), nextPosition, nextPosition, 5);
+    }
+
+    public int GetFirstX()
+    {
+        return GetFirst().GetX();
+    }
+
+    public int GetFirstY()
+    {
+        return GetFirst().GetY();
+    }
+
+    public int GetNextX()
+    {
+        int[] plusValue = { 0, 1, 0, -1 };
+        return GetFirstX() + plusValue[(int)direction];
+    }
+
+    public int GetNextY()
+    {
+        int[] plusValue = { 1, 0, -1, 0 };
+        return GetFirstY() + plusValue[(int)direction];
+    }
+
+    public void TurnLeft()
+    {
+        direction = (DIRECTION)(((int)direction + 3) % 4);
+    }
+
+    public void TurnRight()
+    {
+        direction = (DIRECTION)(((int)direction + 1) % 4);
     }
 
     public void FrontRotateHero()
@@ -75,6 +116,32 @@ public class Snake {
         Vector3 positionCtrl = firstHeroCtrl.GetPosition();
         Vector3 targetPositionCtrl = firstHeroCtrl.GetTargetPosition();
 
+        int setId = 7;
+        ShiftPosition(setId);
+
+        firstHero.SetAllPosition(x, y, positionCtrl, targetPositionCtrl, setId);
+        
+        heroes.Remove(heroes[0]);
+        heroes.Add(firstHero);
+    }
+    
+    private void BackShiftPosition()
+    {
+        heroes.Reverse();
+        FrontShiftPosition();
+        heroes.Reverse();
+    }
+
+    private void ShiftPosition(int typeId)
+    {
+        Hero firstHero = heroes[0];
+
+        int x = firstHero.GetX();
+        int y = firstHero.GetY();
+        HeroController firstHeroCtrl = firstHero.GetController<HeroController>();
+        Vector3 positionCtrl = firstHeroCtrl.GetPosition();
+        Vector3 targetPositionCtrl = firstHeroCtrl.GetTargetPosition();
+
         bool first = true;
         //Swap Position
         foreach (Hero hero in heroes)
@@ -91,24 +158,20 @@ public class Snake {
             Vector3 tempPositionCtrl = heroCtrl.GetPosition();
             Vector3 tempTargetPositionCtrl = heroCtrl.GetTargetPosition();
 
-            hero.SetAllPosition(x, y, positionCtrl, targetPositionCtrl);
+            if (typeId == 7)
+            {
+                hero.SetAllPosition(x, y, positionCtrl, targetPositionCtrl, 7);
+            }
+            else if(typeId == 5)
+            {
+                hero.SetAllPosition(x, y, tempPositionCtrl, positionCtrl, 5);
+            }
 
             x = tempX;
             y = tempY;
             positionCtrl = tempPositionCtrl;
             targetPositionCtrl = tempTargetPositionCtrl;
         }
-        firstHero.SetAllPosition(x, y, positionCtrl, targetPositionCtrl);
-        
-        heroes.Remove(heroes[0]);
-        heroes.Add(firstHero);
-    }
-    
-    private void BackShiftPosition()
-    {
-        heroes.Reverse();
-        FrontShiftPosition();
-        heroes.Reverse();
     }
 
     public bool IsEmpty()
