@@ -26,12 +26,15 @@ public class GameManager : MonoBehaviour {
 
     private float elapsedTime;
     private float translateTime;
+    private float decreaseTranslateTime;
     private float combatTime;
 
     private float spawnElapseTime;
     private float spawnTime;
 
     private Enemy combatEnemy;
+
+    private int score;
 
     void Awake()
     {
@@ -44,11 +47,14 @@ public class GameManager : MonoBehaviour {
         gameState = GAMESTATE.MOVE;
 
         elapsedTime = 0;
-        translateTime = 0.3f;
+        translateTime = 0.4f;
+        decreaseTranslateTime = 0.025f;
         combatTime = 0.5f;
 
         spawnElapseTime = 0;
-        spawnTime = 1f;
+        spawnTime = 3f;
+
+        score = 0;
 
         combatEnemy = null;
     }
@@ -247,7 +253,8 @@ public class GameManager : MonoBehaviour {
         if (combatEnemy.IsDead())
         {
             combatEnemy = null;
-            // TODO Update Score
+            score += hero.GetHeart();
+            UpSpeed();
             gameState = GAMESTATE.MOVE;
             return;
         }
@@ -278,25 +285,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void ClearSnakeGrid()
+    private void UpSpeed()
     {
-        List<Hero> heroes = snake.GetHeroes();
-        foreach (Hero hero in heroes)
-        {
-            int x = hero.GetX();
-            int y = hero.GetY();
-            gridSystem.RemoveObject(x, y);
-        }
-    }
+        translateTime -= decreaseTranslateTime;
 
-    private void AddSnakeGrid()
-    {
-        List<Hero> heroes = snake.GetHeroes();
-        foreach (Hero hero in heroes)
+        float minimumTranslateTime = 0.1f;
+        if(translateTime <= minimumTranslateTime)
         {
-            int x = hero.GetX();
-            int y = hero.GetY();
-            gridSystem.AddObject(x, y, hero);
+            translateTime = minimumTranslateTime;
         }
     }
 
@@ -325,7 +321,29 @@ public class GameManager : MonoBehaviour {
         gridSystem.AddObject(point1.x, point1.y, newEnemy);
     }
 
-    // Snake
+    // ------------------- Snake -----------------------
+
+    private void ClearSnakeGrid()
+    {
+        List<Hero> heroes = snake.GetHeroes();
+        foreach (Hero hero in heroes)
+        {
+            int x = hero.GetX();
+            int y = hero.GetY();
+            gridSystem.RemoveObject(x, y);
+        }
+    }
+
+    private void AddSnakeGrid()
+    {
+        List<Hero> heroes = snake.GetHeroes();
+        foreach (Hero hero in heroes)
+        {
+            int x = hero.GetX();
+            int y = hero.GetY();
+            gridSystem.AddObject(x, y, hero);
+        }
+    }
 
     public void PopFrontSnake()
     {

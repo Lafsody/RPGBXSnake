@@ -95,6 +95,7 @@ GameObject:
   - 4: {fileID: 1748118041}
   - 114: {fileID: 1748118042}
   - 114: {fileID: 1748118040}
+  - 114: {fileID: 1748118043}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -179,6 +180,17 @@ MonoBehaviour:
   width: 15
   height: 10
   gridSize: 0.2
+--- !u!114 &1748118043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748118039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58914945fe2ea6446b6e4bba3dffddbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1935757350
 GameObject:
   m_ObjectHideFlags: 0
