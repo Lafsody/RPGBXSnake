@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
-    public static GameManager Instance { get{ return _instance; } }
+    public static GameManager Instance { get { return _instance; } }
 
     public enum GAMESTATE
     {
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = this;
         }
@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour {
         gameState = GAMESTATE.MOVE;
 
         elapsedTime = 0;
-        translateTime = 0.5f;
+        translateTime = 0.3f;
         combatTime = 0.5f;
 
         spawnElapseTime = 0;
-        spawnTime = 0.3f;
+        spawnTime = 1f;
 
         combatEnemy = null;
     }
@@ -73,32 +73,30 @@ public class GameManager : MonoBehaviour {
     private Hero CreateHero(int x, int y)
     {
         HeroController controller = CreateController<HeroController>(x, y);
-        Debug.Log(controller);
         return new Hero(x, y, controller);
     }
 
     private Enemy CreateEnemy(int x, int y)
     {
         EnemyController controller = CreateController<EnemyController>(x, y);
-        Debug.Log(controller);
         return new Enemy(x, y, controller);
     }
 
     public T CreateController<T>(int x, int y) where T : GridObjectController
     {
         GameObject prefab = null;
-        if(typeof(T) == typeof(HeroController))
+        if (typeof(T) == typeof(HeroController))
         {
             prefab = SpriteHolder.Instance.heroPrefab;
         }
-        else if(typeof(T) == typeof(EnemyController))
+        else if (typeof(T) == typeof(EnemyController))
         {
             prefab = SpriteHolder.Instance.enemyPrefab;
         }
 
         GameObject gameObject = Instantiate(prefab, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
         SpriteRenderer sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
-        
+
         if (typeof(T) == typeof(HeroController))
         {
             sprite.sprite = SpriteHolder.Instance.GetRandomHeroSprite();
@@ -122,7 +120,7 @@ public class GameManager : MonoBehaviour {
     {
         float deltatime = Time.deltaTime;
         UpdateGameTime(deltatime);
-        if(gameState == GAMESTATE.MOVE)
+        if (gameState == GAMESTATE.MOVE)
             UpdateSpawnTime(deltatime);
     }
 
@@ -160,7 +158,7 @@ public class GameManager : MonoBehaviour {
     private void UpdateSpawnTime(float deltaTime)
     {
         spawnElapseTime += deltaTime;
-        if(spawnElapseTime >= spawnTime)
+        if (spawnElapseTime >= spawnTime)
         {
             spawnElapseTime = 0;
             Spawn();
@@ -174,33 +172,38 @@ public class GameManager : MonoBehaviour {
 
         //Debug.Log(nextX + ", " + nextY);
 
-        if(gridSystem.IsBorder(nextX, nextY))
+        if (gridSystem.IsBorder(nextX, nextY))
         {
-            //snake.PopFront();
+            PopFrontSnake();
             if (snake.IsEmpty())
                 return;
             ForceChangeSnakeDirection();
         }
-        else if(gridSystem.HasObjectOnGrid(nextX, nextY))
+
+        nextX = snake.GetNextX();
+        nextY = snake.GetNextY();
+        if (gridSystem.HasObjectOnGrid(nextX, nextY))
         {
             GridObject gridObject = gridSystem.GetObjectOnGrid(nextX, nextY);
-            if(gridObject is Hero)
+            if (gridObject is Hero)
             {
-                snake.AddHero(gridObject as Hero);
+                if (!(gridObject as Hero).IsInList())
+                    snake.AddHero(gridObject as Hero);
+                else
+                {
+                    PopFrontSnake();
+                    return;
+                }
             }
-            else if(gridObject is Enemy)
+            else if (gridObject is Enemy)
             {
                 gameState = GAMESTATE.COMBAT;
                 combatEnemy = gridObject as Enemy;
                 return;
             }
         }
-        nextX = snake.GetNextX();
-        nextY = snake.GetNextY();
 
-        ClearSnakeGrid();
-        snake.MoveTo(GetRealPositionFromGridId(nextX, nextY));
-        AddSnakeGrid();
+        MoveSnakeTo(GetRealPositionFromGridId(nextX, nextY));
     }
 
     private void ForceChangeSnakeDirection()
@@ -232,7 +235,7 @@ public class GameManager : MonoBehaviour {
 
     private void Combat()
     {
-        if(combatEnemy == null)
+        if (combatEnemy == null)
         {
             Debug.Log("No enemy to combat");
             return;
@@ -241,7 +244,7 @@ public class GameManager : MonoBehaviour {
         Hero hero = snake.GetFirst();
 
         Attack(hero, combatEnemy);
-        if(combatEnemy.IsDead())
+        if (combatEnemy.IsDead())
         {
             combatEnemy = null;
             // TODO Update Score
@@ -250,12 +253,10 @@ public class GameManager : MonoBehaviour {
         }
 
         Attack(combatEnemy, hero);
-        if(hero.IsDead())
+        if (hero.IsDead())
         {
-            ClearSnakeGrid();
-            snake.PopFront();
-            AddSnakeGrid();
-            if(snake.IsEmpty())
+            PopFrontSnake();
+            if (snake.IsEmpty())
             {
                 gameState = GAMESTATE.GAMEEND;
             }
@@ -269,9 +270,10 @@ public class GameManager : MonoBehaviour {
             damage = 0;
         target.Damage(damage);
 
-        if(target.IsDead())
+        if (target.IsDead())
         {
-            gridSystem.RemoveObject(target.GetX(), target.GetY());
+            if(target is Enemy)
+                gridSystem.RemoveObject(target.GetX(), target.GetY());
             target.Dead();
         }
     }
@@ -279,7 +281,7 @@ public class GameManager : MonoBehaviour {
     private void ClearSnakeGrid()
     {
         List<Hero> heroes = snake.GetHeroes();
-        foreach(Hero hero in heroes)
+        foreach (Hero hero in heroes)
         {
             int x = hero.GetX();
             int y = hero.GetY();
@@ -290,19 +292,19 @@ public class GameManager : MonoBehaviour {
     private void AddSnakeGrid()
     {
         List<Hero> heroes = snake.GetHeroes();
-        foreach(Hero hero in  heroes)
+        foreach (Hero hero in heroes)
         {
             int x = hero.GetX();
             int y = hero.GetY();
             gridSystem.AddObject(x, y, hero);
-        } 
+        }
     }
 
     private void Spawn()
     {
         // Spawn Hero
         GridSystem.Point point = gridSystem.GetFreeSpace();
-        if(point == null)
+        if (point == null)
         {
             gameState = GAMESTATE.GAMEEND;
             return;
@@ -321,5 +323,76 @@ public class GameManager : MonoBehaviour {
 
         Enemy newEnemy = CreateEnemy(point1.x, point1.y);
         gridSystem.AddObject(point1.x, point1.y, newEnemy);
+    }
+
+    // Snake
+
+    public void PopFrontSnake()
+    {
+        ClearSnakeGrid();
+        snake.PopFront();
+        AddSnakeGrid();
+    }
+
+    public void MoveSnakeTo(Vector3 position)
+    {
+        ClearSnakeGrid();
+        snake.MoveTo(position);
+        AddSnakeGrid();
+    }
+
+    public void TurnLeft()
+    {
+        snake.TurnLeft();
+
+        if (IsNextIsHeroInLine() || IsNextIsBorder())
+            snake.TurnRight();
+    }
+
+    public void TurnRight()
+    {
+        snake.TurnRight();
+
+        if (IsNextIsHeroInLine() || IsNextIsBorder())
+            snake.TurnLeft();
+    }
+
+    public bool IsNextIsHeroInLine()
+    {
+        int nextX = snake.GetNextX();
+        int nextY = snake.GetNextY();
+        if (gridSystem.HasObjectOnGrid(nextX, nextY))
+        {
+            GridObject gridObject = gridSystem.GetObjectOnGrid(nextX, nextY);
+            if (gridObject is Hero)
+            {
+                if ((gridObject as Hero).IsInList())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public bool IsNextIsBorder()
+    {
+        int nextX = snake.GetNextX();
+        int nextY = snake.GetNextY();
+        return gridSystem.IsBorder(nextX, nextY);
+    }
+
+    public void SwitchHeroUp()
+    {
+        ClearSnakeGrid();
+        snake.FrontRotateHero();
+        AddSnakeGrid();
+    }
+
+    public void SwitchHeroDown()
+    {
+        ClearSnakeGrid();
+        snake.BackRotateHero();
+        AddSnakeGrid();
     }
 }

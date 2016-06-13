@@ -23,6 +23,7 @@ public class Snake {
     public void AddHero(Hero hero)
     {
         heroes.Add(hero);
+        hero.SetInList(true);
     }
 
     public void PopFront()
@@ -30,7 +31,7 @@ public class Snake {
         Hero hero = heroes[0];
         FrontRotateHero();
         heroes.Remove(hero);
-        // TODO hero.clearStatus or remove or whathever
+        hero.Dead();
     }
 
     public Hero GetFirst()
@@ -115,16 +116,9 @@ public class Snake {
     {
         Hero firstHero = heroes[0];
 
-        int x = firstHero.GetX();
-        int y = firstHero.GetY();
-        HeroController firstHeroCtrl = firstHero.GetController<HeroController>();
-        Vector3 positionCtrl = firstHeroCtrl.GetPosition();
-        Vector3 targetPositionCtrl = firstHeroCtrl.GetTargetPosition();
 
         int setId = 7;
         ShiftPosition(setId);
-
-        firstHero.SetAllPosition(x, y, positionCtrl, targetPositionCtrl, setId);
         
         heroes.Remove(heroes[0]);
         heroes.Add(firstHero);
@@ -177,6 +171,9 @@ public class Snake {
             positionCtrl = tempPositionCtrl;
             targetPositionCtrl = tempTargetPositionCtrl;
         }
+
+        if(typeId == 7)
+            firstHero.SetAllPosition(x, y, positionCtrl, targetPositionCtrl, typeId);
     }
 
     public bool IsEmpty()
