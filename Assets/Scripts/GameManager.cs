@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
     private float spawnElapseTime;
     private float spawnTime;
 
+    private Enemy combatEnemy;
+
     void Awake()
     {
         if(_instance == null)
@@ -46,7 +48,9 @@ public class GameManager : MonoBehaviour {
         combatTime = 0.5f;
 
         spawnElapseTime = 0;
-        spawnTime = 3;
+        spawnTime = 0.3f;
+
+        combatEnemy = null;
     }
 
     void Start()
@@ -69,12 +73,14 @@ public class GameManager : MonoBehaviour {
     private Hero CreateHero(int x, int y)
     {
         HeroController controller = CreateController<HeroController>(x, y);
+        Debug.Log(controller);
         return new Hero(x, y, controller);
     }
 
     private Enemy CreateEnemy(int x, int y)
     {
         EnemyController controller = CreateController<EnemyController>(x, y);
+        Debug.Log(controller);
         return new Enemy(x, y, controller);
     }
 
@@ -116,7 +122,8 @@ public class GameManager : MonoBehaviour {
     {
         float deltatime = Time.deltaTime;
         UpdateGameTime(deltatime);
-        UpdateSpawnTime(deltatime);
+        if(gameState == GAMESTATE.MOVE)
+            UpdateSpawnTime(deltatime);
     }
 
     private void UpdateGameTime(float deltaTime)
@@ -184,6 +191,7 @@ public class GameManager : MonoBehaviour {
             else if(gridObject is Enemy)
             {
                 gameState = GAMESTATE.COMBAT;
+                combatEnemy = gridObject as Enemy;
                 return;
             }
         }
@@ -224,7 +232,48 @@ public class GameManager : MonoBehaviour {
 
     private void Combat()
     {
+        if(combatEnemy == null)
+        {
+            Debug.Log("No enemy to combat");
+            return;
+        }
 
+        Hero hero = snake.GetFirst();
+
+        Attack(hero, combatEnemy);
+        if(combatEnemy.IsDead())
+        {
+            combatEnemy = null;
+            // TODO Update Score
+            gameState = GAMESTATE.MOVE;
+            return;
+        }
+
+        Attack(combatEnemy, hero);
+        if(hero.IsDead())
+        {
+            ClearSnakeGrid();
+            snake.PopFront();
+            AddSnakeGrid();
+            if(snake.IsEmpty())
+            {
+                gameState = GAMESTATE.GAMEEND;
+            }
+        }
+    }
+
+    private void Attack(GameCharacter attacker, GameCharacter target)
+    {
+        int damage = attacker.GetSword() * attacker.GetMultiplier(target.GetCharacterType()) - target.GetShield();
+        if (damage < 0)
+            damage = 0;
+        target.Damage(damage);
+
+        if(target.IsDead())
+        {
+            gridSystem.RemoveObject(target.GetX(), target.GetY());
+            target.Dead();
+        }
     }
 
     private void ClearSnakeGrid()

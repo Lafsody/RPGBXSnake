@@ -14,6 +14,7 @@ public abstract class GameCharacter : GridObject{
     protected int heart;
     protected int sword;
     protected int shield;
+    protected bool alive;
     protected CHARACTER_TYPE characterType;
 
     public GameCharacter(int _x, int _y, GridObjectController _controller) : base (_x, _y, _controller)
@@ -24,9 +25,11 @@ public abstract class GameCharacter : GridObject{
     protected void InitialStatus()
     {
         maxHeart = heart = Random.Range(1, 20);
-        sword = Random.Range(1, 10);
-        shield = Random.Range(1, 10);
+        sword = Random.Range(6, 10);
+        shield = Random.Range(1, 5);
         characterType = (CHARACTER_TYPE) Random.Range(0, 2);
+
+        alive = true;
     }
 
     public int GetHeart()
@@ -47,5 +50,27 @@ public abstract class GameCharacter : GridObject{
     public CHARACTER_TYPE GetCharacterType()
     {
         return characterType;
+    }
+
+    public abstract int GetMultiplier(CHARACTER_TYPE _type);
+
+    public void Damage(int damage)
+    {
+        heart -= damage;
+        if(heart < 0)
+        {
+            heart = 0;
+            alive = false;
+        }
+    }
+
+    public bool IsDead()
+    {
+        return !alive;
+    }
+
+    public void Dead()
+    {
+        controller.Dead();
     }
 }

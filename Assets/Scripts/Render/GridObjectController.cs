@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GridObjectController : MonoBehaviour {
+public abstract class GridObjectController : MonoBehaviour {
 
     protected Vector3 targetPosition;
     protected float elapsedTime;
@@ -50,5 +50,10 @@ public class GridObjectController : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, targetPosition, elapsedTime);
         }
+    }
+
+    public void Dead()
+    {
+        gameObject.SetActive(false);
     }
 }
