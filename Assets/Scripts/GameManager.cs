@@ -90,7 +90,15 @@ public class GameManager : MonoBehaviour {
 
         GameObject gameObject = Instantiate(prefab, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
         SpriteRenderer sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
-        sprite.sprite = SpriteHolder.Instance.GetRandomHeroSprite();
+        
+        if (typeof(T) == typeof(HeroController))
+        {
+            sprite.sprite = SpriteHolder.Instance.GetRandomHeroSprite();
+        }
+        else if (typeof(T) == typeof(EnemyController))
+        {
+            sprite.sprite = SpriteHolder.Instance.GetRandomEnemySprite();
+        }
 
         return gameObject.GetComponent<T>();
     }
@@ -170,16 +178,17 @@ public class GameManager : MonoBehaviour {
             if(gridObject is Hero)
             {
                 snake.AddHero(gridObject as Hero);
+                gridSystem.RemoveObject(nextX, nextY);
             }
             else if(gridObject is Enemy)
             {
                 gameState = GAMESTATE.COMBAT;
+                return;
             }
         }
-        else
-        {
-            snake.MoveTo(GetRealPositionFromGridId(nextX, nextY));
-        }
+        nextX = snake.GetNextX();
+        nextY = snake.GetNextY();
+        snake.MoveTo(GetRealPositionFromGridId(nextX, nextY));
     }
 
     private void ForceChangeSnakeDirection()
