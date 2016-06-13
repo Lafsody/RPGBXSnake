@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
     public T CreateController<T>(int x, int y) where T : GridObjectController
     {
         GameObject gameObject = Instantiate(SpriteHolder.Instance.heroPrefabs, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
-        SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+        SpriteRenderer sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
         sprite.sprite = SpriteHolder.Instance.GetRandomHeroSprite();
 
         return gameObject.GetComponent<T>();

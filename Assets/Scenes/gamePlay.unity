@@ -85,33 +85,56 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1353525238
-GameObject:
+--- !u!1001 &965816154
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1353525239}
-  m_Layer: 0
-  m_Name: Character
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1353525239
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1353525238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 413474, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 139114, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_Name
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 163426, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1748118039
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +143,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1748118041}
+  - 114: {fileID: 1748118042}
   - 114: {fileID: 1748118040}
   m_Layer: 0
   m_Name: GameManager
@@ -139,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d7a7398783b214787989d2678982d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroPrefabs: {fileID: 163426, guid: 9b9267385409be34d8d97df51b15607c, type: 2}
   heroes:
   - {fileID: 21300000, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
   - {fileID: 21300002, guid: 126cd031970989e4e9b588b07223cda3, type: 3}
@@ -189,6 +214,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1748118042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748118039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa356aedd76d4a149ab759375f22b2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 10
+  height: 10
+  gridSize: 0.2
 --- !u!1 &1935757350
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +288,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
