@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
         gameState = GAMESTATE.MOVE;
 
         elapsedTime = 0;
-        translateTime = 1;
+        translateTime = 0.5f;
     }
 
     void Start()
@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour {
     public Vector3 GetRealPositionFromGridId(int x, int y)
     {
         float posX = (x - 1.0f * width / 2) * gridSize;
-        float posZ = (y - 1.0f * height / 2) * gridSize;
-        return new Vector3(posX, 0, posZ);
+        float posY = (y - 1.0f * height / 2) * gridSize;
+        return new Vector3(posX, posY, 0);
     }
 
     void Update()
@@ -109,9 +109,13 @@ public class GameManager : MonoBehaviour {
         int nextX = snake.GetNextX();
         int nextY = snake.GetNextY();
 
+        //Debug.Log(nextX + ", " + nextY);
+
         if(gridSystem.IsBorder(nextX, nextY))
         {
             snake.PopFront();
+            if (snake.IsEmpty())
+                return;
             ForceChangeSnakeDirection();
         }
         else if(gridSystem.HasObjectOnGrid(nextX, nextY))
@@ -134,7 +138,29 @@ public class GameManager : MonoBehaviour {
 
     private void ForceChangeSnakeDirection()
     {
-
+        int r = Random.Range(0, 1);
+        if (r == 0) // Turn Left
+        {
+            snake.TurnLeft();
+            int nextX = snake.GetNextX();
+            int nextY = snake.GetNextY();
+            if (gridSystem.IsBorder(nextX, nextY))
+            {
+                snake.TurnRight();
+                snake.TurnRight();
+            }
+        }
+        else
+        {
+            snake.TurnRight();
+            int nextX = snake.GetNextX();
+            int nextY = snake.GetNextY();
+            if (gridSystem.IsBorder(nextX, nextY))
+            {
+                snake.TurnLeft();
+                snake.TurnLeft();
+            }
+        }
     }
 
     private void Combat()
