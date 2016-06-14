@@ -19,9 +19,20 @@ public class GraphicManager : MonoBehaviour
 
     public Text midText;
     public Text scoreText;
+    public Text levelText;
     public Image film;
     public GameObject BG;
     public GameObject BG2;
+
+    public void SetScore(int score)
+    {
+        scoreText.text = "Score : " + score;
+    }
+
+    public void SetLevel(int level)
+    {
+        levelText.text = "Level : " + level;
+    }
 
     public void Pause()
     {

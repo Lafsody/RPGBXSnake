@@ -19,15 +19,41 @@ public abstract class GameCharacter : GridObject{
 
     public GameCharacter(int _x, int _y, GridObjectController _controller) : base (_x, _y, _controller)
     {
-        InitialStatus();
+        InitialStatus(1);
     }
 
-    protected void InitialStatus()
+    public GameCharacter(int _x, int _y, GridObjectController _controller, int level) : base(_x, _y, _controller)
     {
-        maxHeart = heart = Random.Range(5, 20);
-        sword = Random.Range(6, 10);
-        shield = Random.Range(1, 5);
-        characterType = (CHARACTER_TYPE) Random.Range(0, 3);
+        InitialStatus(level);
+    }
+
+    protected virtual void InitialStatus(int level)
+    {
+        switch(level)
+        {
+            case 1:
+                maxHeart = heart = Random.Range(6, 8);
+                sword = Random.Range(2, 4);
+                shield = Random.Range(0, 1);
+                break;
+            case 2:
+                maxHeart = heart = Random.Range(8, 12);
+                sword = Random.Range(4, 6);
+                shield = Random.Range(0, 2);
+                break;
+            case 3:
+                maxHeart = heart = Random.Range(10, 15);
+                sword = Random.Range(7, 10);
+                shield = Random.Range(1, 3);
+                break;
+            case 4:
+            default:
+                maxHeart = heart = Random.Range(15, 20);
+                sword = Random.Range(8, 12);
+                shield = Random.Range(2, 4);
+                break;
+        }
+        characterType = (CHARACTER_TYPE)Random.Range(0, 3);
 
         alive = true;
     }
