@@ -208,10 +208,9 @@ public class GameManager : MonoBehaviour {
 
         if (gridSystem.IsBorder(nextX, nextY))
         {
-            PopFrontSnake();
+            HitWall();
             if (snake.IsEmpty())
                 return;
-            ForceChangeSnakeDirection();
         }
 
         nextX = snake.GetNextX();
@@ -222,10 +221,12 @@ public class GameManager : MonoBehaviour {
             if (gridObject is Hero)
             {
                 if (!(gridObject as Hero).IsInList())
-                    snake.AddHero(gridObject as Hero);
+                {
+                    JoinParty(gridObject as Hero);
+                }
                 else
                 {
-                    PopFrontSnake();
+                    HitSnake();
                     return;
                 }
             }
@@ -238,6 +239,21 @@ public class GameManager : MonoBehaviour {
         }
 
         MoveSnakeTo(GetRealPositionFromGridId(nextX, nextY));
+    }
+
+    private void HitWall()
+    {
+        AudioManager.Instance.PlayWallHitSound();
+        PopFrontSnake();
+        if (snake.IsEmpty())
+            return;
+        ForceChangeSnakeDirection();
+    }
+
+    private void HitSnake()
+    {
+        AudioManager.Instance.PlayWallHitSound();
+        PopFrontSnake();
     }
 
     private void ForceChangeSnakeDirection()
@@ -265,6 +281,12 @@ public class GameManager : MonoBehaviour {
                 snake.TurnLeft();
             }
         }
+    }
+
+    private void JoinParty(Hero hero)
+    {
+        AudioManager.Instance.PlayJoinPartySound();
+        snake.AddHero(hero);
     }
 
     private void Combat()
@@ -300,6 +322,7 @@ public class GameManager : MonoBehaviour {
 
     private void Attack(GameCharacter attacker, GameCharacter target)
     {
+        AudioManager.Instance.PlayHitSound();
         int damage = attacker.GetSword() * attacker.GetMultiplier(target.GetCharacterType()) - target.GetShield();
         if (damage < 0)
             damage = 0;
