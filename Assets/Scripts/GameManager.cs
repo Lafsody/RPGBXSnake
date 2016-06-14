@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour {
     public float combatTime;
     public float bossTime;
 
+    private float startTranslateTime;
+    private float startBossTime;
+
     private float spawnElapseTime;
     public float spawnTime;
 
@@ -53,6 +56,9 @@ public class GameManager : MonoBehaviour {
 
         gameState = GAMESTATE.PAUSE;
 
+        startTranslateTime = translateTime;
+        startBossTime = bossTime;
+
         ResetTime();
 
         score = 0;
@@ -60,17 +66,17 @@ public class GameManager : MonoBehaviour {
         isBossAppear = false;
 
         combatEnemy = null;
-
-
-        int spriteScale = 200;
-        GraphicManager.Instance.BG.transform.localScale = new Vector3(width * gridSize * spriteScale, height * gridSize * spriteScale, 5);
-        GraphicManager.Instance.BG2.transform.localScale = new Vector3(width * gridSize * spriteScale + spriteScale * gridSize, height * gridSize * spriteScale + spriteScale * gridSize, 6);
-
+        
         snake = new Snake();
     }
 
     void Start()
     {
+        int spriteScale = 200;
+
+        GraphicManager.Instance.BG.transform.localScale = new Vector3(width * gridSize * spriteScale, height * gridSize * spriteScale, 5);
+        GraphicManager.Instance.BG2.transform.localScale = new Vector3(width * gridSize * spriteScale + spriteScale * gridSize, height * gridSize * spriteScale + spriteScale * gridSize, 6);
+
         InitiateSnake();
         Spawn();
         Pause();
@@ -96,6 +102,10 @@ public class GameManager : MonoBehaviour {
         elapsedTime = 0;
         elapsedBossTime = 0;
         spawnElapseTime = 0;
+
+
+        translateTime = startTranslateTime;
+        bossTime = startBossTime;
     }
 
     private void InitiateSnake()
