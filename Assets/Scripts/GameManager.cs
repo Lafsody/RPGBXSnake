@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour {
     public int width;
     public int height;
     public float gridSize;
+
+    public Text scoreText;
 
     private GridSystem gridSystem;
     private Snake snake;
@@ -253,7 +256,7 @@ public class GameManager : MonoBehaviour {
         if (combatEnemy.IsDead())
         {
             combatEnemy = null;
-            score += hero.GetHeart();
+            UpScore(hero.GetHeart());
             UpSpeed();
             gameState = GAMESTATE.MOVE;
             return;
@@ -320,6 +323,19 @@ public class GameManager : MonoBehaviour {
         Enemy newEnemy = CreateEnemy(point1.x, point1.y);
         gridSystem.AddObject(point1.x, point1.y, newEnemy);
     }
+    // ------------------- Score ---------------------
+    private void ResetText()
+    {
+        score = 0;
+        scoreText.text = "Score : " + score;
+    }
+
+    private void UpScore(int value)
+    {
+        score += value;
+        scoreText.text = "Score : " + score;
+    }
+
 
     // ------------------- Snake -----------------------
 
