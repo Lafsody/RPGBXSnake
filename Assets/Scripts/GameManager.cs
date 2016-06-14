@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public float gridSize;
 
     public Text scoreText;
+    public GameObject BG;
+    public GameObject BG2;
 
     private GridSystem gridSystem;
     private Snake snake;
@@ -28,12 +30,12 @@ public class GameManager : MonoBehaviour {
     private GAMESTATE gameState;
 
     private float elapsedTime;
-    private float translateTime;
-    private float decreaseTranslateTime;
-    private float combatTime;
+    public float translateTime;
+    public float decreaseTranslateTime;
+    public float combatTime;
 
     private float spawnElapseTime;
-    private float spawnTime;
+    public float spawnTime;
 
     private Enemy combatEnemy;
 
@@ -50,21 +52,24 @@ public class GameManager : MonoBehaviour {
         gameState = GAMESTATE.MOVE;
 
         elapsedTime = 0;
-        translateTime = 0.4f;
-        decreaseTranslateTime = 0.025f;
-        combatTime = 0.5f;
 
         spawnElapseTime = 0;
-        spawnTime = 3f;
 
         score = 0;
 
         combatEnemy = null;
+
+
+        int spriteScale = 200;
+        BG.transform.localScale = new Vector3(width * gridSize * spriteScale, height * gridSize * spriteScale, 5);
+        BG2.transform.localScale = new Vector3(width * gridSize * spriteScale + spriteScale * gridSize, height * gridSize * spriteScale + spriteScale * gridSize, 6);
+
     }
 
     void Start()
     {
         InitiateSnake();
+        Spawn();
     }
 
     private void InitiateSnake()
@@ -128,8 +133,8 @@ public class GameManager : MonoBehaviour {
 
     public Vector3 GetRealPositionFromGridId(int x, int y)
     {
-        float posX = (x - 1.0f * width / 2) * gridSize;
-        float posY = (y - 1.0f * height / 2) * gridSize;
+        float posX = (x - 1.0f * width / 2) * gridSize + gridSize / 2f;
+        float posY = (y - 1.0f * height / 2) * gridSize + gridSize / 2f;
         return new Vector3(posX, posY, 0);
     }
 
@@ -332,6 +337,12 @@ public class GameManager : MonoBehaviour {
         Enemy newEnemy = CreateEnemy(point1.x, point1.y);
         gridSystem.AddObject(point1.x, point1.y, newEnemy);
     }
+
+    public float GetTranslateTime()
+    {
+        return translateTime;
+    }
+
     // ------------------- Score ---------------------
     private void ResetText()
     {
