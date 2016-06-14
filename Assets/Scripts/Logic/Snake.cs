@@ -20,6 +20,21 @@ public class Snake {
         direction = DIRECTION.RIGHT;
     }
 
+    public void Reset()
+    {
+        Clear();
+        direction = DIRECTION.RIGHT;
+    }
+
+    public void Clear()
+    {
+        foreach (Hero hero in heroes)
+        {
+            hero.Dead();
+        }
+        heroes.Clear();
+    }
+
     public void AddHero(Hero hero)
     {
         heroes.Add(hero);

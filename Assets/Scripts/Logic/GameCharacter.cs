@@ -71,6 +71,8 @@ public abstract class GameCharacter : GridObject{
 
     public void Dead()
     {
+        // Bring back to pool
+        alive = false;
         controller.Dead();
     }
 }

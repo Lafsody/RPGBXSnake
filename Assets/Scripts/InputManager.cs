@@ -16,6 +16,11 @@ public class InputManager : MonoBehaviour {
 
 	void Update()
     {
+        if(Input.anyKeyDown)
+        {
+            GameManager.Instance.AnyKeyDown();
+        }
+
         if(Input.GetKeyDown("up"))
         {
             GameManager.Instance.SwitchHeroUp();

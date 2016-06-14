@@ -20,10 +20,6 @@ public class GameManager : MonoBehaviour {
     public int height;
     public float gridSize;
 
-    public Text scoreText;
-    public GameObject BG;
-    public GameObject BG2;
-
     private GridSystem gridSystem;
     private Snake snake;
 
@@ -49,7 +45,7 @@ public class GameManager : MonoBehaviour {
         }
         gridSystem = new GridSystem(width, height);
 
-        gameState = GAMESTATE.MOVE;
+        gameState = GAMESTATE.PAUSE;
 
         elapsedTime = 0;
 
@@ -61,21 +57,37 @@ public class GameManager : MonoBehaviour {
 
 
         int spriteScale = 200;
-        BG.transform.localScale = new Vector3(width * gridSize * spriteScale, height * gridSize * spriteScale, 5);
-        BG2.transform.localScale = new Vector3(width * gridSize * spriteScale + spriteScale * gridSize, height * gridSize * spriteScale + spriteScale * gridSize, 6);
+        GraphicManager.Instance.BG.transform.localScale = new Vector3(width * gridSize * spriteScale, height * gridSize * spriteScale, 5);
+        GraphicManager.Instance.BG2.transform.localScale = new Vector3(width * gridSize * spriteScale + spriteScale * gridSize, height * gridSize * spriteScale + spriteScale * gridSize, 6);
 
+        snake = new Snake();
     }
 
     void Start()
     {
         InitiateSnake();
         Spawn();
+        Pause();
+    }
+
+    private void ResetGame()
+    {
+        ResetScore();
+
+        elapsedTime = 0;
+
+        spawnElapseTime = 0;
+
+        snake.Reset();
+
+        gridSystem.ClearGrids();
+
+        InitiateSnake();
+        Spawn();
     }
 
     private void InitiateSnake()
     {
-        snake = new Snake();
-
         int x = width / 2;
         int y = height / 2;
 
@@ -158,7 +170,7 @@ public class GameManager : MonoBehaviour {
 
                 if (snake.IsEmpty())
                 {
-                    gameState = GAMESTATE.GAMEEND;
+                    GameEnd();
                 }
             }
         }
@@ -171,7 +183,7 @@ public class GameManager : MonoBehaviour {
 
                 if (snake.IsEmpty())
                 {
-                    gameState = GAMESTATE.GAMEEND;
+                    GameEnd();
                 }
             }
         }
@@ -281,7 +293,7 @@ public class GameManager : MonoBehaviour {
             PopFrontSnake();
             if (snake.IsEmpty())
             {
-                gameState = GAMESTATE.GAMEEND;
+                GameEnd();
             }
         }
     }
@@ -319,7 +331,6 @@ public class GameManager : MonoBehaviour {
         GridSystem.Point point = gridSystem.GetFreeSpace();
         if (point == null)
         {
-            gameState = GAMESTATE.GAMEEND;
             return;
         }
 
@@ -330,7 +341,6 @@ public class GameManager : MonoBehaviour {
         GridSystem.Point point1 = gridSystem.GetFreeSpace();
         if (point1 == null)
         {
-            gameState = GAMESTATE.GAMEEND;
             return;
         }
 
@@ -343,17 +353,58 @@ public class GameManager : MonoBehaviour {
         return translateTime;
     }
 
+    // ------------------- Game State -----------------
+
+    public void AnyKeyDown()
+    {
+        if(gameState == GAMESTATE.PAUSE)
+        {
+            Continue();
+        }
+        else if (gameState == GAMESTATE.GAMEEND)
+        {
+            Retry();
+        }
+    }
+
+    public void Pause()
+    {
+        gameState = GAMESTATE.PAUSE;
+        GraphicManager.Instance.Pause();
+    }
+
+    public void Continue()
+    {
+        gameState = GAMESTATE.MOVE;
+        GraphicManager.Instance.UnPause();
+    }
+
+    public void GameEnd()
+    {
+        gameState = GAMESTATE.GAMEEND;
+        GraphicManager.Instance.GameEnd();
+    }
+
+    public void Retry()
+    {
+        gameState = GAMESTATE.PAUSE;
+        GraphicManager.Instance.Retry();
+
+        // TODO Reset Game
+        ResetGame();
+    }
+
     // ------------------- Score ---------------------
-    private void ResetText()
+    private void ResetScore()
     {
         score = 0;
-        scoreText.text = "Score : " + score;
+        GraphicManager.Instance.scoreText.text = "Score : " + score;
     }
 
     private void UpScore(int value)
     {
         score += value;
-        scoreText.text = "Score : " + score;
+        GraphicManager.Instance.scoreText.text = "Score : " + score;
     }
 
 

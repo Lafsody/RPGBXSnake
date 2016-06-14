@@ -36,6 +36,14 @@ public class GridSystem {
         {
             for (int j = 0; j < height; j++)
             {
+                if(HasObjectOnGrid(i, j))
+                {
+                    GridObject gridObject = GetObjectOnGrid(i, j);
+                    if( gridObject is GameCharacter)
+                    {
+                        (gridObject as GameCharacter).Dead();
+                    }
+                }
                 grids[i, j] = null;
                 freeSpaces.Add(new Point(i, j));
             }
