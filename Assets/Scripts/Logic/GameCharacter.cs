@@ -24,10 +24,10 @@ public abstract class GameCharacter : GridObject{
 
     protected void InitialStatus()
     {
-        maxHeart = heart = Random.Range(1, 20);
+        maxHeart = heart = Random.Range(5, 20);
         sword = Random.Range(6, 10);
         shield = Random.Range(1, 5);
-        characterType = (CHARACTER_TYPE) Random.Range(0, 2);
+        characterType = (CHARACTER_TYPE) Random.Range(0, 3);
 
         alive = true;
     }

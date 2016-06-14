@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 126cd031970989e4e9b588b07223cda3
-timeCreated: 1465721226
+timeCreated: 1465899104
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -97,6 +97,7 @@ TextureImporter:
     21300180: Character_94
     21300182: Character_95
     21300184: Character_96
+    21300186: Character_38
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -137,7 +138,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -151,7 +152,7 @@ TextureImporter:
         width: 14
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_1
@@ -162,7 +163,7 @@ TextureImporter:
         width: 13
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_2
@@ -173,7 +174,7 @@ TextureImporter:
         width: 13
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_3
@@ -184,7 +185,7 @@ TextureImporter:
         width: 13
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_4
@@ -195,7 +196,7 @@ TextureImporter:
         width: 23
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_5
@@ -206,7 +207,7 @@ TextureImporter:
         width: 23
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_6
@@ -217,7 +218,7 @@ TextureImporter:
         width: 20
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_7
@@ -228,7 +229,7 @@ TextureImporter:
         width: 17
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_8
@@ -239,7 +240,7 @@ TextureImporter:
         width: 16
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_9
@@ -250,7 +251,7 @@ TextureImporter:
         width: 17
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_10
@@ -261,7 +262,7 @@ TextureImporter:
         width: 17
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_11
@@ -272,7 +273,7 @@ TextureImporter:
         width: 16
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_12
@@ -283,7 +284,7 @@ TextureImporter:
         width: 16
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_13
@@ -294,7 +295,7 @@ TextureImporter:
         width: 20
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_14
@@ -305,7 +306,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_15
@@ -316,7 +317,7 @@ TextureImporter:
         width: 18
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_16
@@ -327,7 +328,7 @@ TextureImporter:
         width: 16
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_17
@@ -338,7 +339,7 @@ TextureImporter:
         width: 17
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_18
@@ -349,7 +350,7 @@ TextureImporter:
         width: 18
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_19
@@ -360,7 +361,7 @@ TextureImporter:
         width: 19
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_20
@@ -371,7 +372,7 @@ TextureImporter:
         width: 18
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_21
@@ -382,7 +383,7 @@ TextureImporter:
         width: 16
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_22
@@ -393,7 +394,7 @@ TextureImporter:
         width: 16
         height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_23
@@ -404,7 +405,7 @@ TextureImporter:
         width: 15
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_24
@@ -415,7 +416,7 @@ TextureImporter:
         width: 20
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_25
@@ -426,7 +427,7 @@ TextureImporter:
         width: 16
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_26
@@ -437,7 +438,7 @@ TextureImporter:
         width: 19
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_27
@@ -448,7 +449,7 @@ TextureImporter:
         width: 20
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_28
@@ -459,7 +460,7 @@ TextureImporter:
         width: 15
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_29
@@ -470,7 +471,7 @@ TextureImporter:
         width: 15
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_30
@@ -503,7 +504,7 @@ TextureImporter:
         width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_33
@@ -514,7 +515,7 @@ TextureImporter:
         width: 38
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -19, y: 29}
@@ -533,7 +534,7 @@ TextureImporter:
         width: 38
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -19, y: 29}
@@ -552,7 +553,7 @@ TextureImporter:
         width: 40
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -20, y: 30}
@@ -571,7 +572,7 @@ TextureImporter:
         width: 16
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_37
@@ -582,7 +583,7 @@ TextureImporter:
         width: 18
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_39
@@ -593,7 +594,7 @@ TextureImporter:
         width: 22
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_41
@@ -604,7 +605,7 @@ TextureImporter:
         width: 14
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_42
@@ -615,7 +616,7 @@ TextureImporter:
         width: 14
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_43
@@ -626,7 +627,7 @@ TextureImporter:
         width: 16
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_44
@@ -637,7 +638,7 @@ TextureImporter:
         width: 21
         height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_45
@@ -648,7 +649,7 @@ TextureImporter:
         width: 21
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_46
@@ -659,7 +660,7 @@ TextureImporter:
         width: 12
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_47
@@ -670,7 +671,7 @@ TextureImporter:
         width: 17
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_48
@@ -681,7 +682,7 @@ TextureImporter:
         width: 21
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_49
@@ -692,7 +693,7 @@ TextureImporter:
         width: 13
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_50
@@ -703,7 +704,7 @@ TextureImporter:
         width: 19
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_51
@@ -714,7 +715,7 @@ TextureImporter:
         width: 18
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_52
@@ -725,7 +726,7 @@ TextureImporter:
         width: 18
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_53
@@ -736,7 +737,7 @@ TextureImporter:
         width: 20
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_54
@@ -747,7 +748,7 @@ TextureImporter:
         width: 23
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_55
@@ -758,7 +759,7 @@ TextureImporter:
         width: 12
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_56
@@ -769,7 +770,7 @@ TextureImporter:
         width: 12
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_57
@@ -780,7 +781,7 @@ TextureImporter:
         width: 15
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_58
@@ -791,7 +792,7 @@ TextureImporter:
         width: 16
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_59
@@ -802,7 +803,7 @@ TextureImporter:
         width: 16
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_60
@@ -813,7 +814,7 @@ TextureImporter:
         width: 14
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_61
@@ -824,7 +825,7 @@ TextureImporter:
         width: 17
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_62
@@ -835,7 +836,7 @@ TextureImporter:
         width: 16
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_63
@@ -846,7 +847,7 @@ TextureImporter:
         width: 19
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_64
@@ -857,7 +858,7 @@ TextureImporter:
         width: 19
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_65
@@ -868,7 +869,7 @@ TextureImporter:
         width: 13
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_66
@@ -879,7 +880,7 @@ TextureImporter:
         width: 19
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_67
@@ -901,7 +902,7 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_69
@@ -912,7 +913,7 @@ TextureImporter:
         width: 24
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_70
@@ -923,7 +924,7 @@ TextureImporter:
         width: 38
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -19, y: 29}
@@ -942,7 +943,7 @@ TextureImporter:
         width: 38
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -19, y: 29}
@@ -961,7 +962,7 @@ TextureImporter:
         width: 38
         height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -19, y: 29}
@@ -980,7 +981,7 @@ TextureImporter:
         width: 22
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_75
@@ -991,7 +992,7 @@ TextureImporter:
         width: 18
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_76
@@ -1002,7 +1003,7 @@ TextureImporter:
         width: 13
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_77
@@ -1013,7 +1014,7 @@ TextureImporter:
         width: 19
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_78
@@ -1024,7 +1025,7 @@ TextureImporter:
         width: 19
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_79
@@ -1035,7 +1036,7 @@ TextureImporter:
         width: 19
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_80
@@ -1046,7 +1047,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_81
@@ -1057,7 +1058,7 @@ TextureImporter:
         width: 23
         height: 17
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_82
@@ -1079,7 +1080,7 @@ TextureImporter:
         width: 26
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_84
@@ -1090,7 +1091,7 @@ TextureImporter:
         width: 17
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_86
@@ -1101,7 +1102,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_87
@@ -1112,7 +1113,7 @@ TextureImporter:
         width: 20
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_88
@@ -1123,7 +1124,7 @@ TextureImporter:
         width: 13
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_89
@@ -1145,7 +1146,7 @@ TextureImporter:
         width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_91
@@ -1156,7 +1157,7 @@ TextureImporter:
         width: 21
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_92
@@ -1167,7 +1168,7 @@ TextureImporter:
         width: 21
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_93
@@ -1178,7 +1179,7 @@ TextureImporter:
         width: 20
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_94
@@ -1189,7 +1190,7 @@ TextureImporter:
         width: 21
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_95
@@ -1200,7 +1201,7 @@ TextureImporter:
         width: 15
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Character_96
@@ -1211,9 +1212,28 @@ TextureImporter:
         width: 12
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+    - name: Character_38
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 255
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 17}
+        - {x: -11, y: 15}
+        - {x: -11, y: 9}
+        - {x: -9, y: 7}
+        - {x: 12, y: 7}
+        - {x: 14, y: 9}
+        - {x: 14, y: 15}
+        - {x: 12, y: 17}
     outline: []
   spritePackingTag: 
   userData: 

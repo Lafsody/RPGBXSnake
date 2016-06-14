@@ -82,13 +82,21 @@ public class GameManager : MonoBehaviour {
     private Hero CreateHero(int x, int y)
     {
         HeroController controller = CreateController<HeroController>(x, y);
-        return new Hero(x, y, controller);
+        Hero newHero = new Hero(x, y, controller);
+        
+        controller.SetAura(newHero.GetCharacterType());
+        controller.SetHPLength(newHero.GetHeart());
+        return newHero;
     }
 
     private Enemy CreateEnemy(int x, int y)
     {
         EnemyController controller = CreateController<EnemyController>(x, y);
-        return new Enemy(x, y, controller);
+        Enemy newEnemy = new Enemy(x, y, controller);
+
+        controller.SetAura(newEnemy.GetCharacterType());
+        controller.SetHPLength(newEnemy.GetHeart());
+        return newEnemy;
     }
 
     public T CreateController<T>(int x, int y) where T : GridObjectController
@@ -103,8 +111,8 @@ public class GameManager : MonoBehaviour {
             prefab = SpriteHolder.Instance.enemyPrefab;
         }
 
-        GameObject gameObject = Instantiate(prefab, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
-        SpriteRenderer sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        GameObject newGameObject = Instantiate(prefab, GetRealPositionFromGridId(x, y), Quaternion.identity) as GameObject;
+        SpriteRenderer sprite = newGameObject.transform.Find("Character").GetComponent<SpriteRenderer>();
 
         if (typeof(T) == typeof(HeroController))
         {
@@ -115,7 +123,7 @@ public class GameManager : MonoBehaviour {
             sprite.sprite = SpriteHolder.Instance.GetRandomEnemySprite();
         }
 
-        return gameObject.GetComponent<T>();
+        return newGameObject.GetComponent<T>();
     }
 
     public Vector3 GetRealPositionFromGridId(int x, int y)
@@ -279,6 +287,7 @@ public class GameManager : MonoBehaviour {
         if (damage < 0)
             damage = 0;
         target.Damage(damage);
+        target.GetController<GameCharacterController>().SetHPLength(target.GetHeart());
 
         if (target.IsDead())
         {
@@ -377,6 +386,9 @@ public class GameManager : MonoBehaviour {
 
     public void TurnLeft()
     {
+        if (gameState != GAMESTATE.MOVE)
+            return;
+
         snake.TurnLeft();
 
         if (IsNextIsHeroInLine() || IsNextIsBorder())
@@ -385,6 +397,9 @@ public class GameManager : MonoBehaviour {
 
     public void TurnRight()
     {
+        if (gameState != GAMESTATE.MOVE)
+            return;
+
         snake.TurnRight();
 
         if (IsNextIsHeroInLine() || IsNextIsBorder())
